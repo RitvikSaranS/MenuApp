@@ -1,0 +1,65 @@
+.addOrEdit {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.employee-table {
+  margin: 0 2rem;
+}
+
+.heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+button {
+  background-color: #6f38c5;
+}
+
+form {
+  margin: 0 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+th,
+td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Hide table headers on small screens */
+@media screen and (max-width: 576px) {
+  th {
+    display: none;
+  }
+
+  td {
+    display: block;
+    border: none;
+    padding: 0.25rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+    margin-right: 0.5rem;
+  }
+}

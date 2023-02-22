@@ -1,0 +1,90 @@
+<div class="employee-table">
+  <div class="heading">Manage Employees</div>
+  <table>
+    <tr>
+      <th style="width: 100px">Index</th>
+      <th>Name</th>
+      <th style="width: 120px">Age</th>
+      <th>Position</th>
+      <th style="width: 150px">Salary</th>
+      <th style="width: 150px">Edit Employee Details</th>
+      <th style="width: 150px">Remove Employee</th>
+    </tr>
+    <tr *ngFor="let employee of employeeList; let i = index">
+      <td data-label="index">{{ i + 1 }}</td>
+      <td data-label="Name">{{ employee.name }}</td>
+      <td data-label="Age">{{ employee.age }}</td>
+      <td data-label="Position">{{ employee.position }}</td>
+      <td data-label="Salary">{{ employee.salary }}</td>
+      <td>
+        <i
+          style="cursor: pointer"
+          (click)="editEmployee(employee)"
+          class="material-icons"
+          >edit</i
+        >
+      </td>
+      <td>
+        <i
+          style="cursor: pointer"
+          (click)="removeEmployee(employee)"
+          class="material-icons"
+          >delete</i
+        >
+      </td>
+    </tr>
+  </table>
+</div>
+<form [formGroup]="myForm">
+  <div class="addOrEdit">{{ addOrEdit }}</div>
+  <div class="row">
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Name"
+        required
+        #name
+      />
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="age"
+        placeholder="Age"
+        #age
+      />
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="position"
+        placeholder="Position"
+        #position
+      />
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="salary"
+        placeholder="Salary"
+        #salary
+      />
+    </div>
+    <div class="col">
+      <button
+        type="reset"
+        (click)="
+          addEmployee(name.value, +age.value, position.value, +salary.value)
+        "
+        class="btn btn-success"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</form>
