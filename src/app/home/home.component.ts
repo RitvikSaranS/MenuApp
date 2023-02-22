@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   myForm: FormGroup;
   employeeList!: Employee[];
   observer: any;
-  selectedItemIndex!: number;
+  edittingEmployeeIndex!: number;
+  edittingEmployee!: Employee;
   ifEdit: boolean = false;
   addOrEdit: string = 'Add Employee';
   constructor(private data: HelperService, private fb: FormBuilder) {
@@ -34,32 +35,41 @@ export class HomeComponent implements OnInit {
       this.observer.next(
         this.employeeList.push({ name, age, position, salary })
       );
-    } else if (this.selectedItemIndex >= 0) {
-      this.observer.next(
-        this.employeeList.splice(this.selectedItemIndex, 1, {
-          name,
-          age,
-          position,
-          salary,
-        })
+    } else {
+      this.edittingEmployeeIndex = this.employeeList.indexOf(
+        this.edittingEmployee
       );
-      this.ifEdit = false;
-      this.addOrEdit = 'Add Employee';
+      if (this.edittingEmployeeIndex < 0) alert('Employee data is missing');
+      else {
+        this.observer.next(
+          this.employeeList.splice(this.edittingEmployeeIndex, 1, {
+            name,
+            age,
+            position,
+            salary,
+          })
+        );
+        this.ifEdit = false;
+        this.addOrEdit = 'Add Employee';
+      }
     }
   }
   editEmployee(employee: Employee) {
     this.addOrEdit = 'Edit Employee';
-    this.selectedItemIndex = this.employeeList.indexOf(employee);
+    this.edittingEmployeeIndex = this.employeeList.indexOf(employee);
     this.myForm.setValue(employee);
+    this.edittingEmployee = employee;
     if (!this.ifEdit) {
       this.ifEdit = true;
     }
   }
   removeEmployee(employee: Employee) {
-    this.selectedItemIndex = this.employeeList.indexOf(employee);
+    this.edittingEmployeeIndex = this.employeeList.indexOf(employee);
     if (confirm(`Do you want to remove ${employee.name}`)) {
       this.observer.next(
-        this.observer.next(this.employeeList.splice(this.selectedItemIndex, 1))
+        this.observer.next(
+          this.employeeList.splice(this.edittingEmployeeIndex, 1)
+        )
       );
     }
   }

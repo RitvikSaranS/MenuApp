@@ -25,7 +25,6 @@ form {
 
 table {
   width: 100%;
-  border-collapse: collapse;
   margin-bottom: 1rem;
 }
 
@@ -43,6 +42,9 @@ th {
 
 /* Hide table headers on small screens */
 @media screen and (max-width: 576px) {
+  .heading {
+    text-align: center;
+  }
   th {
     display: none;
   }
@@ -51,7 +53,7 @@ th {
     display: block;
     border: none;
     padding: 0.25rem;
-    text-align: center;
+    text-align: left;
     border-bottom: 1px solid #ddd;
   }
 
@@ -61,5 +63,6 @@ th {
     display: inline-block;
     width: 120px;
     margin-right: 0.5rem;
+    text-align: right;
   }
 }
