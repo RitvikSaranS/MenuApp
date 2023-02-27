@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { APP_SERVICE_CONFIG, APP_CONFIG } from './employee-service.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmpRegComponent } from './emp-reg/emp-reg.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     AboutComponent,
     ContactsComponent,
+    EmpRegComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [
